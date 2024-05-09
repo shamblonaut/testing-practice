@@ -1,4 +1,6 @@
-import { add, subtract, multiply, divide } from "../src/calculator.js";
+import { createCalculator } from "../src/calculator.js";
+
+const calculator = createCalculator();
 
 describe("Addition", () => {
   const tests = [
@@ -49,7 +51,7 @@ describe("Addition", () => {
 
   tests.forEach((unit) => {
     test(unit.description, () => {
-      expect(add(...unit.input)).toBe(unit.output);
+      expect(calculator.add(...unit.input)).toBe(unit.output);
     });
   });
 });
@@ -107,7 +109,7 @@ describe("Subtraction", () => {
 
   tests.forEach((unit) => {
     test(unit.description, () => {
-      expect(subtract(...unit.input)).toBe(unit.output);
+      expect(calculator.subtract(...unit.input)).toBe(unit.output);
     });
   });
 });
@@ -160,8 +162,8 @@ describe("Multiplication", () => {
   tests.forEach((unit) => {
     test(unit.description, () => {
       if (unit.approximate) {
-        expect(multiply(...unit.input)).toBeCloseTo(unit.output);
-      } else expect(multiply(...unit.input)).toBe(unit.output);
+        expect(calculator.multiply(...unit.input)).toBeCloseTo(unit.output);
+      } else expect(calculator.multiply(...unit.input)).toBe(unit.output);
     });
   });
 });
@@ -218,8 +220,8 @@ describe("Division", () => {
   tests.forEach((unit) => {
     test(unit.description, () => {
       if (unit.approximate) {
-        expect(divide(...unit.input)).toBeCloseTo(unit.output);
-      } else expect(divide(...unit.input)).toBe(unit.output);
+        expect(calculator.divide(...unit.input)).toBeCloseTo(unit.output);
+      } else expect(calculator.divide(...unit.input)).toBe(unit.output);
     });
   });
 });
